@@ -1,34 +1,35 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.http import HttpResponseRedirect
 from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
-class HomeView(ListView):
-  model = Post
-  template_name = 'home.html'
-  ordering = ['-post_date']
 
-  # def get_context_data(self, *args, **kwargs):
-  #   category_menu = Category.objects.all()
-  #   context = super(HomeView, self).get_context_data(*args, **kwargs)
-  #   context["category_menu"] = category_menu
-  #   return context
+
+def SearchResults(request):
+  if request.method == "POST":
+    search_result = request.POST['search_result']
+    posts = Post.objects.filter(title__contains=search_result)
+
+    return render(request, 'search_results.html', {'search_result': search_result, 'posts': posts})
+  else:
+    return render(request, 'search_results.html', {})
 
 
 def CategoryView(request, categories):
   category_posts = Post.objects.filter(category=categories.replace('-', ' '))
   return render(request, 'categories.html', {'categories': categories.title(), 'category_posts': category_posts})
 
+class HomeView(ListView):
+  model = Post
+  template_name = 'home.html'
+  ordering = ['-post_date']
+
+
 class ArticleDetailView(DetailView):
   model = Post
   template_name = 'article_details.html'
-  
-  # def get_context_data(self, *args, **kwargs):
-  #   category_menu = Category.objects.all()
-  #   context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
-  #   context["category_menu"] = category_menu
-  #   return context
 
 class AddPostView(CreateView):
   model = Post

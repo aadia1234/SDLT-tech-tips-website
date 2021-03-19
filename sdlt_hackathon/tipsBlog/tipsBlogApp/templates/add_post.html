@@ -7,12 +7,18 @@
 
   <br><br>
   <div class="form-group">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
+      {{ form.media }}
       {{ form.as_p }}
       <button class="btn btn-secondary">Add Post</button>
     </form>
   </div>
+
+  <script>
+    var name = "{{ user.id }}";
+    name = document.getElementById("user").value = name;
+  </script>
 {% else %}
   <h1>Sorry, you don't have access to add/edit/remove content</h1>
 {% endif %}

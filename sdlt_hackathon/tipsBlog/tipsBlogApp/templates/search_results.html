@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <center>
+    {% if search_result %}
+      <h1>You searched For: "{{ search_result }}"</h1>
+      <br>
+      {% for post in posts %}
+        <h3><a href="{% url 'article_details' post.pk %}">{{ post }}</a></h3>
+        <br>
+      {% endfor %}
+    {% else %}
+    <h1>Sorry, please enter in your query before you search!</h1>
+    {% endif %}
+  </center>
+{% endblock %}
