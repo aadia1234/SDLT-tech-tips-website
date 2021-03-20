@@ -10,7 +10,7 @@
         - {{ post.author.first_name }} {{ post.author.last_name }} 
         - {{ post.post_date }}
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.id == post.author.id %}
           -
           <small>
             <a href="{% url 'update_post' post.pk %}">(Edit)</a>
@@ -18,7 +18,9 @@
           </small>
         {% endif %}
         <br>
-        {{ post.body|slice:":200"|safe}}
+        <a>{{ post.snippet }}</a>
+        <hr>
+        <br>
       </li>
     {% endfor %}
     </ul>

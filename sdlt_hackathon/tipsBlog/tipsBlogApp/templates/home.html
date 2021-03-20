@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Hello World!</h1>
+  <h1>Tips/Posts</h1>
   <ul>
   {% for post in object_list %}
     <li><a href="{% url 'article_details' post.pk %}">{{ post.title }} </a>
@@ -18,6 +18,8 @@
       {% endif %}
       <br>
       <a>{{ post.snippet }}</a>
+      <hr>
+      <br>
     </li>
   {% endfor %}
   </ul>

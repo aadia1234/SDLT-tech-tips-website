@@ -127,6 +127,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tinymce/tinymce.min.js")
+# TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce")
 
 STATICFILES_DIR = (
     os.path.join(BASE_DIR, 'static'),
@@ -134,7 +138,6 @@ STATICFILES_DIR = (
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
 
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,

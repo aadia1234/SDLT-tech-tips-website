@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.http import HttpResponseRedirect
 from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
@@ -19,7 +18,7 @@ def SearchResults(request):
 
 def CategoryView(request, categories):
   category_posts = Post.objects.filter(category=categories.replace('-', ' '))
-  return render(request, 'categories.html', {'categories': categories.title(), 'category_posts': category_posts})
+  return render(request, 'categories.html', {'categories': categories.title().replace('-', ' '), 'category_posts': category_posts})
 
 class HomeView(ListView):
   model = Post
