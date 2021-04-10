@@ -5,8 +5,8 @@
     <title>Document</title>
 </head>
 <body>
-    <script nonce = "<random nonce>" src = "popup.js" charset = "utf-8"></script>
-    <style type="text/css">
+    <script type="text/javascript" src = "popup.js"></script>
+    <style type="text/css" rel= "stylesheet">
         body {
             min-width: 400px;
             max-width: 100%;
@@ -15,17 +15,16 @@
             position: relative;
             vertical-align:middle;
         }
-        .button2 {
-                    background-color: white;
-                    color: black;
-                    border: 2px solid #008CBA;
-                }
-    </style>
-    <form nonce="nonce-8IBTHwOdqNKAWeKl7plt8g==" id="form">
-        Enter your query: <input type="text" name="query"><br>
-        <input type="submit" value="Submit"/>
-    </form>
-    <button nonce="nonce-8IBTHwOdqNKAWeKl7plt8g==" onclick="QuerySaver();">Reveal Query</button>
 
+        #submitButton {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+    </style>
+    <form >
+        <b>Enter your query: </b><input type="text" id="textBox"><br>
+        <input type="button" value="submit query" onclick="query()" />
+    </form>
 </body>
 </html>
