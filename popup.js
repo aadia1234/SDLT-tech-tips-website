@@ -1,0 +1,1 @@
+window.open("https://help.hkis.edu.hk/hc/en-us");
