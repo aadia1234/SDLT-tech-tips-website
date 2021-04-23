@@ -1,10 +1,13 @@
+manifest.json:
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "HKIS Quick Help",
+  "short_name": "HKIS Help",
+  "description": "Access the the hkis help desk website easily",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["storage"],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "hkis_icon.png"
   }
 }
